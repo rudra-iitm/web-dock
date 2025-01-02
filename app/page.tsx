@@ -2,8 +2,7 @@
 import { WebContainer } from '@webcontainer/api';
 import { useEffect, useRef } from 'react';
 import { Textarea } from "@/components/ui/textarea"
-import { installDependencies, startShell } from '@/utils/webcontainers';
-import { Button } from '@/components/ui/button';
+import { startShell } from '@/utils/webcontainers';
 import { Terminal } from '@xterm/xterm';
 import '@xterm/xterm/css/xterm.css';
 
@@ -76,11 +75,6 @@ export default function Home() {
   return (
     <div>
       <Textarea className='max-w-2xl h-lvh' placeholder={projectFiles['index.js'].file.contents}/>
-      <Button onClick={async () => {
-        if (webcontainerInstance.current) {
-          await installDependencies(webcontainerInstance.current);
-        }
-      }}>Install Dependencies</Button>
       <iframe ref={iframeEl} className='w-full h-96' />
       <div ref={terminalRef} className='w-full h-96' />
     </div>
