@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { startShell } from '@/utils/webcontainers';
 import { Terminal } from '@xterm/xterm';
 import '@xterm/xterm/css/xterm.css';
+import CodeEditor from '@/components/code-editor';
 
 const projectFiles = {
   'index.js': {
@@ -77,6 +78,7 @@ export default function Home() {
       <Textarea className='max-w-2xl h-lvh' placeholder={projectFiles['index.js'].file.contents}/>
       <iframe ref={iframeEl} className='w-full h-96' />
       <div ref={terminalRef} className='w-full h-96' />
+      <CodeEditor />
     </div>
   );
 }
