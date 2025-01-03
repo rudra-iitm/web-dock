@@ -26,6 +26,7 @@ const processDirectory = async (dirPath: string): Promise<Record<string, any>> =
             tree[file.name] = {
                 file: {
                     contents,
+                    filePath: filePath.replace(templateDir, '').split('/').slice(2).join('/'),
                 },
             };
         }

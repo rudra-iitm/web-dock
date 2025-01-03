@@ -2,15 +2,14 @@ import React from 'react'
 import ReactCodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 
-const CodeEditor = () => {
-  const [value, setValue] = React.useState("console.log('hello world!');");
+const CodeEditor = ({content, setContent}: { content: string, setContent: React.Dispatch<React.SetStateAction<string>> }) => {
   const onChange = React.useCallback((val: React.SetStateAction<string>) => {
     console.log('val:', val);
-    setValue(val);
-  }, []);
+    setContent(val);
+  }, [setContent]);
   return (
     <div className='w-full h-full'>
-        <ReactCodeMirror value={value} height='900px' theme='dark' autoFocus  extensions={[javascript({ jsx: true })]} onChange={onChange} />
+        <ReactCodeMirror value={content} height='900px' theme='dark' autoFocus  extensions={[javascript({ jsx: true })]} onChange={onChange} />
     </div>
   )
 }

@@ -7,18 +7,23 @@ import { parseProjectFiles } from "@/utils/parseProjectFiles";
 
 interface FileTreeProps {
   projectFiles: Record<string, any>;
+  setCurrentFile: (fileName: string) => void;
 }
 
-export function FileTree({ projectFiles }: FileTreeProps) {
+export function FileTree({ projectFiles, setCurrentFile }: FileTreeProps) {
   const [elements, setElements] = useState<TreeViewElement[]>([]);
 
   useEffect(() => {
     const parsedFiles = parseProjectFiles(projectFiles);
+    parsedFiles.forEach((file) => {
+      file.name = file.name.split('/')[file.name.split('/').length - 1];
+    });
     setElements(parsedFiles);
   }, [projectFiles]);
 
-  const renderTreeItems = (items: TreeViewElement[]) => {
+  const renderTreeItems = (items: any[]) => {
     return items.map((item) => {
+      item.name = item.name.split('/')[item.name.split('/').length - 1];
       if (item.children && item.children.length > 0) {
         return (
           <Folder key={item.id} element={item.name} value={item.id}>
@@ -26,13 +31,13 @@ export function FileTree({ projectFiles }: FileTreeProps) {
           </Folder>
         );
       } else {
-        return <File key={item.id} value={item.id}>{item.name}</File>;
+        return <File key={item.id} value={item.id} handleSelect={() => setCurrentFile(item.filePath) }>{item.name}</File>;
       }
     });
   };
 
   return (
-    <div className="relative flex h-full w-full flex-col items-start justify-start overflow-auto rounded-lg border bg-background p-4 md:shadow-xl">
+    <div className="relative flex h-full w-full flex-col bg-[#0d1117] items-start justify-start overflow-auto bg-background p-4 md:shadow-xl">
       {elements.length > 0 && (
         <Tree
           className="w-full"
