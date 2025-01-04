@@ -4,7 +4,6 @@ import { javascript } from '@codemirror/lang-javascript';
 
 const CodeEditor = ({content, setContent}: { content: string, setContent: React.Dispatch<React.SetStateAction<string>> }) => {
   const onChange = React.useCallback((val: React.SetStateAction<string>) => {
-    console.log('val:', val);
     setContent(val);
   }, [setContent]);
   return (
