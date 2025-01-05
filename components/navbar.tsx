@@ -65,9 +65,9 @@ function NavbarMenu({ className }: { className?: string }) {
           </MenuItem>
         </SignedOut>
         <SignedIn>
-          <MenuItem setActive={setActive} active={active} item="Account">
+            <div className="flex flex-col space-y-4 text-sm">
               <UserButton afterSignOutUrl='/' />
-          </MenuItem>
+            </div>
         </SignedIn>
         </div>
       </Menu>

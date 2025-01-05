@@ -95,7 +95,7 @@ export const Footer = () => {
   )
 }
 
-const SocialIcon = ({ Icon, href }: { Icon: React.ElementType, href: string }) => (
+export const SocialIcon = ({ Icon, href }: { Icon: React.ElementType, href: string }) => (
   <motion.a
     href={href}
     target="_blank"

@@ -6,6 +6,7 @@ import {
   ClerkProvider,
 } from '@clerk/nextjs';
 import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({
               maxOpacity={0.5}
               flickerChance={0.1}
             />
+            <Header />
             {children}
             <Footer />
           </div>
