@@ -24,7 +24,7 @@ function NavbarMenu({ className }: { className?: string }) {
       <Menu setActive={setActive}>
 
         <div className="flex items-center space-x-4 my-auto">
-         <div className="mr-10">
+         <div className="md:mr-10">
           <Logo textSize={'xl'} logoSize={'40'} />
          </div>
         <MenuItem setActive={setActive} active={active} item="Code">

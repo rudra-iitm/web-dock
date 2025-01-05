@@ -31,7 +31,7 @@ export function Homebody() {
           draggable={false}
         />
       </ContainerScroll>
-      <div className="flex items-center justify-center px-20">
+      <div className="md:flex md:items-center md:justify-center md:px-20 px-5">
         <div className="flex justify-center items-center">
           <AnimatedTestimonials testimonials={frameworks} />
         </div>

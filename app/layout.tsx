@@ -30,19 +30,21 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body
+      <body
           className={`bg-black ${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          {children}
-          <Footer />
-          <FlickeringGrid
-          className="z-0 relative inset-0"
-          squareSize={4}
-          gridGap={16}
-          color="#60A5FA"
-          maxOpacity={0.5}
-          flickerChance={0.1}
-        />
+          <div className="relative min-h-screen">
+            <FlickeringGrid
+              className="fixed inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]"
+              squareSize={4}
+              gridGap={8}
+              color="#60A5FA"
+              maxOpacity={0.5}
+              flickerChance={0.1}
+            />
+            {children}
+            <Footer />
+          </div>
         </body>
       </html>
     </ClerkProvider>

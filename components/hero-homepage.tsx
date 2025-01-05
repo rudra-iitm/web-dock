@@ -26,7 +26,7 @@ export function Hero() {
   }, [isHovered, codeEditorControls])
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen text-white overflow-hidden">
       {/* Hero Section */}
       <main className="container mx-auto px-4 h-screen flex items-center">
         <div className="text-center space-y-6 max-w-4xl mx-auto">
@@ -48,7 +48,7 @@ export function Hero() {
               Web Dock
             </h1>
             </div>
-            <span className="text-3xl bg-gradient-to-r from-[#0A1F7D] to-[#020B3F] bg-clip-text text-transparent">
+            <span className="text-3xl bg-gradient-to-r from-white to-[#020B3F] bg-clip-text text-transparent">
                 {" "}
                 Dev Environments Inside Your Browser
               </span>
