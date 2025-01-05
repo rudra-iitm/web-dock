@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import FlickeringGrid from "@/components/ui/flickering-grid";
+import {
+  ClerkProvider,
+} from '@clerk/nextjs';
+import { Footer } from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,20 +28,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`bg-black ${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-        <FlickeringGrid
-        className="z-0 relative inset-0"
-        squareSize={4}
-        gridGap={16}
-        color="#60A5FA"
-        maxOpacity={0.5}
-        flickerChance={0.1}
-      />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`bg-black ${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          {children}
+          <Footer />
+          <FlickeringGrid
+          className="z-0 relative inset-0"
+          squareSize={4}
+          gridGap={16}
+          color="#60A5FA"
+          maxOpacity={0.5}
+          flickerChance={0.1}
+        />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  images: {
+    domains: ['assets.aceternity.com', 'upload.wikimedia.org', 'hono.dev', 'mern.io'],
+  },
   async headers() {
     return [
       {

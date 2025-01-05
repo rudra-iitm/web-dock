@@ -1,12 +1,12 @@
-import Header from "@/components/header";
 import { Homebody } from "@/components/home-body";
+import { Navbar } from "@/components/navbar";
 import FlickeringGrid from "@/components/ui/flickering-grid";
 
 export default function Home() {
   return (
     <div className="">
       <div>
-        <Header />
+        <Navbar />
         <Homebody />
         <FlickeringGrid
         className="z-0 relative inset-0"
