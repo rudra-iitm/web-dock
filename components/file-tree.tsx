@@ -78,5 +78,6 @@ const fileIcons = {
 
 export const getFileIcon = (fileName: string) => {
   const extension = fileName.split('.').pop()?.toLowerCase() || '';
+  // @ts-expect-error: fileIcons object may not have the key for the given extension
   return fileIcons[extension] || fileIcons.default;
 };
