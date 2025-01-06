@@ -154,7 +154,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
           direction,
         }}
       >
-        <div className={cn("w-full border border-gray-700 rounded-md bg-gray-900", className)}>
+        <div className={cn("w-full border border-white rounded-md bg-black", className)}>
           <ScrollArea
             ref={ref}
             className="relative h-full p-4"

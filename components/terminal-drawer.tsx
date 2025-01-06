@@ -12,8 +12,9 @@ import { TerminalIcon } from "lucide-react";
 import Terminal from "./ui/terminal";
 // import { MiniBrowserDialog } from "./mini-browser-drawer";
 import { WebContainer } from "@webcontainer/api";
+import { MiniBrowserDialog } from "./mini-browser-drawer";
 
-export const TerminalDrawer = ({webcontainerInstance}: {webcontainerInstance: WebContainer}) => {
+export const TerminalDrawer = ({webcontainerInstance, iframeUrl}: {webcontainerInstance: WebContainer, iframeUrl: string | null}) => {
   return (
     <Drawer>
     <DrawerTrigger asChild>
@@ -27,7 +28,7 @@ export const TerminalDrawer = ({webcontainerInstance}: {webcontainerInstance: We
               <div>
                 Terminal
               </div>
-              {/* <MiniBrowserDialog  /> */}
+              <MiniBrowserDialog  url={iframeUrl}/>
             </div>
           </DrawerTitle>
         </DrawerHeader>

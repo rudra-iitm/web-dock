@@ -5,8 +5,6 @@ import FlickeringGrid from "@/components/ui/flickering-grid";
 import {
   ClerkProvider,
 } from '@clerk/nextjs';
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +32,7 @@ export default function RootLayout({
       <body
           className={`bg-black ${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <div className="relative min-h-screen">
+          <div className="relative">
             <FlickeringGrid
               className="fixed inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]"
               squareSize={4}
@@ -43,9 +41,7 @@ export default function RootLayout({
               maxOpacity={0.5}
               flickerChance={0.1}
             />
-            <Header />
               {children}
-            <Footer />
           </div>
         </body>
       </html>

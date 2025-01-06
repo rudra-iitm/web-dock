@@ -6,13 +6,9 @@ import '@xterm/xterm/css/xterm.css';
 import CodeEditor from '@/components/code-editor';
 import { FileTree } from '@/components/file-tree';
 import { useSearchParams } from 'next/navigation'
-import {
-    ResizableHandle,
-    ResizablePanel,
-    ResizablePanelGroup,
-  } from "@/components/ui/resizable"
-import { TerminalDrawer } from '@/components/terminal-drawer';
-import { MiniBrowserDialog } from '@/components/mini-browser-drawer';
+import { Header } from '@/components/IDE/header';
+import { Resizable } from 're-resizable';
+import { StatusBar } from '@/components/IDE/status-bar';
 
 const fetchProjectTree = async (template: string) => {
     const res = await fetch(`/api/projects?template=${template}`);
@@ -95,22 +91,30 @@ export default function CodePage() {
   }, [content]);
 
   return (
-    <div className='h-screen'>
-      <div className="flex items-center gap-3">
-              <MiniBrowserDialog url={iframeUrl}/>
-              {webcontainerInstance.current && <TerminalDrawer webcontainerInstance={webcontainerInstance.current} />}
-      </div>
-        <ResizablePanelGroup direction="horizontal" 
-        className="min-h-[200px] h-full w-full border md:min-w-[450px]"
+    <div className="h-screen flex flex-col">
+      <Header
+        iframeUrl={iframeUrl}
+        webcontainerInstance={webcontainerInstance.current}
+      />
+      
+      <div className="flex-1 flex overflow-hidden">
+        <Resizable
+          defaultSize={{ width: '240px', height: '100%' }}
+          minWidth="160px"
+          maxWidth="400px"
+          enable={{ right: true }}
+          className="border-r border-border"
         >
-            <ResizablePanel defaultSize={20}>
-                <FileTree projectFiles={projectFiles} setCurrentFile={setCurrentFile} />
-            </ResizablePanel>
-            <ResizableHandle />
-            <ResizablePanel defaultSize={80}>
-                <CodeEditor content={content} setContent={setContent}/>
-            </ResizablePanel>
-        </ResizablePanelGroup>
+          <FileTree projectFiles={projectFiles} setCurrentFile={setCurrentFile} />
+        </Resizable>
+
+        <div className="flex-1 flex flex-col">
+          <div className="flex-1 min-h-0">
+            <CodeEditor content={content} setContent={setContent}/>
+          </div>
+        </div>
+      </div>
+      <StatusBar activeFile={currentFile} />
     </div>
   );
 }

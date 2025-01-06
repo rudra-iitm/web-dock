@@ -37,7 +37,7 @@ export function FileTree({ projectFiles, setCurrentFile }: FileTreeProps) {
   };
 
   return (
-    <div className="relative flex h-full w-full flex-col bg-[#0d1117] items-start justify-start overflow-auto bg-background p-4 md:shadow-xl">
+    <div className="relative flex h-full w-full flex-col items-start justify-start overflow-auto p-4 md:shadow-xl">
       {elements.length > 0 && (
         <Tree
           className="w-full"
