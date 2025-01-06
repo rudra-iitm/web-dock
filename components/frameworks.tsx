@@ -12,6 +12,7 @@ import {
 import Image from "next/image";
 import { Dialog, DialogContent } from "./ui/dialog";
 import { DialogTrigger } from "@radix-ui/react-dialog";
+import { CreateDock } from "./create-dock";
 
 export function Frameworks() {
   return (
@@ -27,8 +28,8 @@ export function Frameworks() {
               className={`hover:cursor-pointer bg-gradient-to-r from-[#0A1F7D] to-[#020B3F] text-white ${i === 3 || i === 6 ? "md:col-span-2" : ""}`}
             />
           </DialogTrigger>
-          <DialogContent className="sm:max-w-md text-white bg-black">
-            <p>{item.description}</p>
+          <DialogContent className="sm:max-w-3xl text-white bg-black">
+            <CreateDock />
           </DialogContent>
         </Dialog>
       ))}

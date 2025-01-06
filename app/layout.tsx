@@ -44,7 +44,7 @@ export default function RootLayout({
               flickerChance={0.1}
             />
             <Header />
-            {children}
+              {children}
             <Footer />
           </div>
         </body>
