@@ -19,10 +19,10 @@ export function Safari({
 }: SafariProps) {
   return (
     <div 
-      className={`flex h-full w-full flex-col overflow-hidden rounded-lg border border-border bg-background ${className}`}
+      className={`flex h-full w-full flex-col overflow-hidden rounded-lg border border-black bg-background ${className}`}
     >
       {/* Browser Chrome */}
-      <div className="flex h-[52px] min-h-[52px] items-center border-b border-border bg-background px-4">
+      <div className="flex h-[52px] min-h-[52px] items-center border-b border-border bg-black px-4">
         {/* Window Controls */}
           <div className="flex items-center justify-start space-x-2 px-4 py-2">
           <DialogClose asChild>
@@ -34,21 +34,21 @@ export function Safari({
           </div>
 
         {/* Navigation Controls */}
-        <div className="hidden items-center gap-2 sm:flex">
+        <div className="hidden items-center gap-2 sm:flex ">
           <button 
-            className="rounded-md p-1 text-muted-foreground hover:bg-accent"
+            className="rounded-md p-1 text-muted-foreground hover:bg-accent text-white"
             aria-label="Go back"
           >
             <CiCircleChevLeft />
           </button>
           <button 
-            className="rounded-md p-1 text-muted-foreground hover:bg-accent"
+            className="rounded-md p-1 text-muted-foreground hover:bg-accent text-white"
             aria-label="Go forward"
           >
             <CiCircleChevRight />
           </button>
           <button 
-            className="rounded-md p-1 text-muted-foreground hover:bg-accent"
+            className="rounded-md p-1 text-muted-foreground hover:bg-accent text-white"
             aria-label="Refresh page"
           >
             <MdOutlineRefresh />
@@ -59,26 +59,26 @@ export function Safari({
         <div className="mx-8 flex flex-1 items-center rounded-md bg-[#E5E5E5] px-3 py-1.5 dark:bg-[#404040]">
           <FaShieldAlt className="text-slate-600" />
           <span className="px-2 truncate text-sm text-muted-foreground">
-           {url && url.trim().length < 20 ? url : url?.trim() || "loading..."}
+          {url && url.trim().length > 30 ? `${url.trim().substring(0, 30)}...` : url?.trim() || "loading..."}
           </span>
         </div>
 
         {/* Action Buttons */}
         <div className="hidden items-center gap-2 sm:flex">
           <button 
-            className="rounded-md p-1 text-muted-foreground hover:bg-accent"
+            className="rounded-md p-1 text-muted-foreground hover:bg-accent text-white"
             aria-label="Share"
           >
             <GrCloudUpload />
           </button>
           <button 
-            className="rounded-md p-1 text-muted-foreground hover:bg-accent"
+            className="rounded-md p-1 text-muted-foreground hover:bg-accent text-white"
             aria-label="New window"
           >
             <IoIosAddCircle />
           </button>
           <button 
-            className="rounded-md p-1 text-muted-foreground hover:bg-accent"
+            className="rounded-md p-1 text-muted-foreground hover:bg-accent text-white"
             aria-label="New window"
           >
             <TiTabsOutline />
@@ -87,7 +87,7 @@ export function Safari({
       </div>
 
       {/* Content Area */}
-      <div className="relative flex-1 bg-[#E5E5E5]">
+      <div className="relative flex-1 bg-[#282c34]">
         <iframe
           className="absolute h-full w-full border-0"
           sandbox="allow-same-origin allow-scripts allow-popups allow-forms"

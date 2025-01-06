@@ -95,6 +95,7 @@ export default function CodePage() {
       <Header
         iframeUrl={iframeUrl}
         webcontainerInstance={webcontainerInstance.current}
+        setIframeUrl={setIframeUrl}
       />
       
       <div className="flex-1 flex overflow-hidden">
