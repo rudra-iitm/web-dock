@@ -1,8 +1,13 @@
 import { CodeBlockFun } from "@/components/code-block";
 import { Frameworks } from "@/components/frameworks";
 import { NewDock } from "@/components/new-dock";
+import { auth } from "@clerk/nextjs/server";
 
-export default function Home() {
+export default async function Home() {
+  const { userId, redirectToSignIn } = await auth();
+
+  if (!userId) return redirectToSignIn()
+
   return (
     <div>
         <div className="flex flex-col items-center justify-center">

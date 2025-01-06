@@ -9,6 +9,7 @@ import { useSearchParams } from 'next/navigation'
 import { Header } from '@/components/IDE/header';
 import { Resizable } from 're-resizable';
 import { StatusBar } from '@/components/IDE/status-bar';
+import { RedirectToSignIn, useSession } from '@clerk/nextjs';
 
 const fetchProjectTree = async (template: string) => {
     const res = await fetch(`/api/projects?template=${template}`);
@@ -19,6 +20,7 @@ const fetchProjectTree = async (template: string) => {
 };
 
 export default function CodePage() {
+  const {isSignedIn} = useSession();
   const webcontainerInstance = useRef<WebContainer | null>(null);
   const [projectFiles, setProjectFiles] = useState<Record<string, any>>({});
   const [currentFile, setCurrentFile] = useState<string | null>(null);
@@ -89,6 +91,10 @@ export default function CodePage() {
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [content]);
+
+  if (!isSignedIn) {
+    return <RedirectToSignIn />;
+  }
 
   return (
     <div className="h-screen flex flex-col">
